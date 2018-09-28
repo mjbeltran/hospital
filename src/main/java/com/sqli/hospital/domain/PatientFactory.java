@@ -21,20 +21,17 @@ public class PatientFactory {
 
 	public Patient getPatient(String status) {
 
-		Patient patient = new Patient();
+		Patient patient = new HealthyPatient();
 
 		switch (status) {
 		case Constants.FEVER:
-			patient.setFever(true);
-			patient.setHealthy(false);
+			patient = new FeverPatient();
 			break;
 		case Constants.DIABETES:
-			patient.setDiabetes(true);
-			patient.setHealthy(false);
+			patient = new DiabetesPatient();
 			break;
 		case Constants.TUBERCULOSIS:
-			patient.setTubercolosis(true);
-			patient.setHealthy(false);
+			patient = new TuberculosisPatient();
 			break;
 		default:
 			break;

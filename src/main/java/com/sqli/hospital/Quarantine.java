@@ -21,8 +21,7 @@ public class Quarantine {
 
 	public Quarantine(String subjects) {
 		for (String subject : subjects.split(Constants.SEPARATOR_DATA_PATIENTS)) {
-			Patient patient = PatientFactory.getInstance().getPatient(subject);
-			listPatients.add(patient);
+			listPatients.add(PatientFactory.getInstance().getPatient(subject));
 		}
 	}
 

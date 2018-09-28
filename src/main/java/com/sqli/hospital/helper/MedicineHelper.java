@@ -17,6 +17,11 @@ public final class MedicineHelper {
 		Stream<Patient> allPatients = listPatients.stream();
 		allPatients.forEach(patient -> {
 			patient.setHasAspirine(true);
+			if (patient.isFever()) {
+				patient.setFever(false);
+				patient.setHealthy(true);
+			}
+
 		});
 
 	}
@@ -25,6 +30,10 @@ public final class MedicineHelper {
 		Stream<Patient> allPatients = listPatients.stream();
 		allPatients.forEach(patient -> {
 			patient.setHasAntibiotic(true);
+			if(patient.isHealthy() && patient.hasInsuline()) {
+				patient.setFever(true);
+				patient.setHealthy(false);
+			}
 		});
 
 	}
@@ -33,16 +42,22 @@ public final class MedicineHelper {
 		Stream<Patient> allPatients = listPatients.stream();
 		allPatients.forEach(patient -> {
 			patient.setHasInsuline(true);
+			if(patient.isDiabetes()) {
+				patient.setDead(false);
+				patient.setDiabetes(true);
+			}
 		});
-
 	}
 
 	public static void applyParacetamol(List<Patient> listPatients) {
 		Stream<Patient> allPatients = listPatients.stream();
 		allPatients.forEach(patient -> {
 			patient.setHasParacetamol(true);
+			if(patient.isFever()) {
+				patient.setHealthy(true);
+				patient.setFever(false);
+			}
 		});
-
 	}
 
 }

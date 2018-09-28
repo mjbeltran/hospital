@@ -30,12 +30,6 @@ public class TreatmentManager implements ITreatement {
 
 		MedicineHelper.applyAspirine(listPatients);
 
-		Stream<Patient> patiensFever = listPatients.stream().filter(p -> p.isFever());
-		patiensFever.forEach(patient -> {
-			patient.setFever(false);
-			patient.setHealthy(true);
-		});
-
 	}
 
 	public void antibiotic(List<Patient> listPatients) {
@@ -48,35 +42,17 @@ public class TreatmentManager implements ITreatement {
 			listPatientsToBeHealthy.add(patient);
 		});
 
-		Stream<Patient> patiensHealthy = listPatients.stream().filter(p -> p.isHealthy() && p.hasInsuline());
-		patiensHealthy.forEach(patient -> {
-			patient.setFever(true);
-			patient.setHealthy(false);
-		});
-
 	}
 
 	public void insulin(List<Patient> listPatients) {
 
 		MedicineHelper.applyInsulin(listPatients);
 
-		Stream<Patient> patientsDiabetes = listPatients.stream().filter(p -> p.isDiabetes());
-		patientsDiabetes.forEach(patient -> {
-			patient.setDead(false);
-			patient.setDiabetes(true);
-		});
-
 	}
 
 	public void paracetamol(List<Patient> listPatients) {
 
 		MedicineHelper.applyParacetamol(listPatients);
-
-		Stream<Patient> patientsFever = listPatients.stream().filter(p -> p.isFever());
-		patientsFever.forEach(patient -> {
-			patient.setHealthy(true);
-			patient.setFever(false);
-		});
 
 	}
 
